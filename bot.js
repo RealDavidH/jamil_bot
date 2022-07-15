@@ -6,7 +6,6 @@ const { token } = require("./config.json");
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 
-
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith(".js"));
@@ -39,12 +38,13 @@ client.on("interactionCreate", async (interaction) => {
     const command = client.commands.get(interaction.commandName);
     if (!command) return;
     try {
-        await command.execute(interaction);
+        await command.execute(interaction, client);
     } catch (error) {
         console.error(error);
         await interaction.reply({ content: "There was an error while executing this command!", ephemeral: true });
     }
 });
+
 
 
 client.login(token);
