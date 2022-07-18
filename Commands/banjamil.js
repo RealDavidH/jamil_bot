@@ -1,9 +1,11 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
-    data: new SlashCommandBuilder().setName("banjamil").setDescription("Bans jamil"),
+    data: new SlashCommandBuilder()
+    .setName("banjamil")
+    .setDescription("Bans jamil"),
     async execute(interaction, client) {
-        let jamil = "423999902788616222";
+        let jamil = "152925147957821441";
         let user = interaction.user.id;
         if (user == "294275984230973440") { //this is purely so Celso cannot abuse this shit.
             await interaction.guild.members.kick(user)
@@ -27,6 +29,8 @@ const sendDm = async (id, interaction, client) => {
     });
 };
 
+
+// Brandon id: 152925147957821441
 // Celso id : 294275984230973440
 // Jayah id: 108352252447559680
 // Sandwich id: 944621069225042061
